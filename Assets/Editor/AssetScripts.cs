@@ -56,7 +56,7 @@ public class CreateAssetBundles {
                 File.Delete(Path.Combine(folder, trash_file_2 + ".manifest"));
             }
 
-            string zipFilePath = Path.Combine(folder, "skybox.zip");
+            string zipFilePath = Path.Combine(folder, "skybox.skyzip");
 
             if (File.Exists(zipFilePath)) {
                 File.Delete(zipFilePath);
