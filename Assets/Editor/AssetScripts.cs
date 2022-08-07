@@ -94,6 +94,21 @@ public class CreateAssetBundles {
                     } while (sourceBytes > 0);
                 }
 
+                ze = new ZipEntry("preview.png");
+                ze.DateTime = DateTime.Now;
+                zos.PutNextEntry(ze);
+                using (FileStream fs = File.OpenRead(Path.Combine(in_folder, "preview.png")))
+                {
+                    // Using a fixed size buffer here makes no noticeable difference for output
+                    // but keeps a lid on memory usage.
+                    int sourceBytes;
+                    do
+                    {
+                        sourceBytes = fs.Read(buffer, 0, buffer.Length);
+                        zos.Write(buffer, 0, sourceBytes);
+                    } while (sourceBytes > 0);
+                }
+
                 ze = new ZipEntry("sky.asset");
                 ze.DateTime = DateTime.Now;
                 zos.PutNextEntry(ze);
